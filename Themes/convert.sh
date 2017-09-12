@@ -7,7 +7,7 @@ fi
 
 THEME=$1
 PNG2C=../png2c/png2c
-THEME_HDR=$THEME/$THEME.h
+THEME_HDR=$THEME.h
 
 echo "/* Generated on '`date`' */" > $THEME_HDR
 echo -e "\n#pragma once\n" >> $THEME_HDR
@@ -16,7 +16,7 @@ for i in `ls $THEME/*.png`; do
     echo $HFILE
     $PNG2C $i $HFILE
 
-    echo "#include <Themes/$HFILE>" >> $THEME_HDR
+    echo "#include \"$HFILE\"" >> $THEME_HDR
 done
 echo "" >> $THEME_HDR
 
